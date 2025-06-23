@@ -54,7 +54,7 @@ body.dark .card {
 .social-icons img {
   width: 30px;
   margin: 0 5px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, filter 0.3s;
 }
 
 .social-icons img:hover {
@@ -62,7 +62,7 @@ body.dark .card {
 }
 
 body.dark .social-icons img {
-  filter: invert(1);
+  filter: invert(1) brightness(2);
 }
 
 .cta {
