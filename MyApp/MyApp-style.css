@@ -31,7 +31,7 @@ body.dark {
   z-index: 9999;
 }
 
-body.dark #theme-toggle i {
+body.dark #theme-toggle {
   color: #fff;
 }
 
