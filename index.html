@@ -16,12 +16,16 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+    }
     .hero {
       padding: 120px 20px;
       text-align: center;
-      background: linear-gradient(135deg, #007bff, #00c6ff);
-      color: white;
+      background: var(--hero-bg);
+      color: var(--hero-text);
       position: relative;
     }
     .hero img {
@@ -40,26 +44,26 @@
     .card {
       border: none;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      background: var(--bs-card-bg);
+      color: var(--bs-body-color);
     }
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
     footer {
-      background: #f8f9fa;
+      background: var(--bs-body-bg);
       padding: 20px 0;
       text-align: center;
+      color: var(--bs-body-color);
     }
     .skills span {
       display: inline-block;
-      background: #e9ecef;
+      background: var(--bs-secondary-bg);
       padding: 8px 12px;
       border-radius: 20px;
       margin: 5px;
-    }
-    [data-bs-theme="dark"] .skills span {
-      background: #444;
-      color: #fff;
+      color: var(--bs-body-color);
     }
   </style>
 </head>
@@ -185,14 +189,28 @@
 
   <!-- Animate on Scroll & Theme Toggle -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-bs-theme');
-      html.setAttribute('data-bs-theme', current === 'light' ? 'dark' : 'light');
-    }
-  </script>
+    <script>
+      AOS.init();
+      function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-bs-theme');
+        const newTheme = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-bs-theme', newTheme);
+
+        // Hero arka planı ve text rengini de değiştir
+        if (newTheme === 'dark') {
+          document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #111, #333)');
+          document.documentElement.style.setProperty('--hero-text', '#fff');
+        } else {
+          document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #007bff, #00c6ff)');
+          document.documentElement.style.setProperty('--hero-text', '#fff');
+        }
+      }
+
+      // İlk yüklemede hero rengi varsayılan olsun
+      document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #007bff, #00c6ff)');
+      document.documentElement.style.setProperty('--hero-text', '#fff');
+    </script>
 
 </body>
 </html>
