@@ -26,6 +26,7 @@ body.dark {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 9999;
 }
 
 .card {
@@ -78,9 +79,19 @@ body.dark .instagram-icon {
 }
 
 .cta {
+  display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
-  cursor: pointer;
+  background: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.cta:hover {
+  background: #0056b3;
 }
 
 footer {
