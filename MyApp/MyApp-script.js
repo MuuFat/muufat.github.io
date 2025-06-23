@@ -36,8 +36,22 @@ function deletingEffect() {
 typingEffect();
 
 // Dark/Light Mode Toggle
-document.getElementById("theme-toggle").onclick = () => {
+const toggle = document.getElementById("theme-toggle");
+const icon = document.getElementById("theme-icon");
+
+toggle.onclick = () => {
   document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+  } else {
+    icon.classList.remove("fa-sun");
+    icon.classList.add("fa-moon");
+  }
+
+  icon.classList.add("rotate");
+  setTimeout(() => icon.classList.remove("rotate"), 500);
 };
 
 // Particles.js Config
