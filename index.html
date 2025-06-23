@@ -70,8 +70,8 @@
 <body>
 
   <!-- Theme Toggle -->
-  <button class="btn btn-outline-light theme-toggle" onclick="toggleTheme()">
-    <i class="fas fa-moon"></i>
+  <button id="theme-toggle" class="btn btn-secondary position-fixed top-0 end-0 m-3" onclick="toggleTheme()">
+    <i id="theme-icon" class="fas fa-moon"></i>
   </button>
 
   <!-- HERO -->
@@ -187,28 +187,37 @@
 
   <!-- Animate on Scroll & Theme Toggle -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init();
-      function toggleTheme() {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-bs-theme');
-        const newTheme = current === 'light' ? 'dark' : 'light';
-        html.setAttribute('data-bs-theme', newTheme);
+  <script>
+    AOS.init();
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById("theme-icon");
+      const current = html.getAttribute('data-bs-theme');
+      const newTheme = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-bs-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
 
-        // Hero arka planı ve text rengini de değiştir
-        if (newTheme === 'dark') {
-          document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #111, #333)');
-          document.documentElement.style.setProperty('--hero-text', '#fff');
-        } else {
-          document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #007bff, #00c6ff)');
-          document.documentElement.style.setProperty('--hero-text', '#fff');
-        }
+      if (newTheme === 'dark') {
+        document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #111, #333)');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #007bff, #00c6ff)');
+        icon.classList.replace('fa-sun', 'fa-moon');
       }
+    }
 
-      // İlk yüklemede hero rengi varsayılan olsun
-      document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #007bff, #00c6ff)');
-      document.documentElement.style.setProperty('--hero-text', '#fff');
-    </script>
+    // Sayfa açılışında kaydedilen tema
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    document.documentElement.style.setProperty('--hero-bg',
+      savedTheme === 'dark'
+        ? 'linear-gradient(135deg, #111, #333)'
+        : 'linear-gradient(135deg, #007bff, #00c6ff)'
+    );
+    document.getElementById('theme-icon').classList.add(
+      savedTheme === 'dark' ? 'fa-sun' : 'fa-moon'
+    );
+  </script>
 
 </body>
 </html>
