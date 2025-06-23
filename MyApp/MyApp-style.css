@@ -61,6 +61,10 @@ body.dark .card {
   transform: scale(1.2);
 }
 
+body.dark .social-icons img {
+  filter: invert(1);
+}
+
 .cta {
   margin-top: 20px;
   padding: 10px 20px;
