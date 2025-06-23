@@ -61,8 +61,20 @@ body.dark .card {
   transform: scale(1.2);
 }
 
-body.dark .social-icons img {
-  filter: invert(1) brightness(2);
+body.dark .github-icon {
+  content: url('assets/icons/github-white.svg');
+}
+
+body.dark .linkedin-icon {
+  content: url('assets/icons/linkedin-white.svg');
+}
+
+body.dark .twitter-icon {
+  content: url('assets/icons/twitter-white.svg');
+}
+
+body.dark .instagram-icon {
+  content: url('assets/icons/instagram-white.svg');
 }
 
 .cta {
