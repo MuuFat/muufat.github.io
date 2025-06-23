@@ -30,16 +30,11 @@
     .hero h1 {
       font-size: 2.5rem;
     }
-    .theme-toggle {
-      position: absolute;
+    #theme-toggle {
+      position: fixed;
       top: 20px;
       right: 20px;
       z-index: 9999;
-    }
-    footer {
-      background: #f8f9fa;
-      padding: 20px 0;
-      text-align: center;
     }
     .rotate {
       animation: rotate 0.5s ease;
@@ -48,19 +43,24 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    footer {
+      background: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
   <!-- Theme Toggle -->
-  <button id="theme-toggle" class="btn btn-secondary position-fixed top-0 end-0 m-3" onclick="toggleTheme()">
+  <button id="theme-toggle" class="btn btn-secondary" onclick="toggleTheme()">
     <i id="theme-icon" class="fas fa-moon"></i>
   </button>
 
   <!-- HERO -->
   <section class="hero">
     <h1 data-aos="fade-down">How I Built My Portfolio</h1>
-    <p class="fs-6" data-aos="fade-up">A detailed write-up about building my personal site.</p>
+    <p class="fs-6" data-aos="fade-up">A detailed write up about building my personal site.</p>
   </section>
 
   <!-- CONTENT -->
@@ -78,7 +78,7 @@
     &copy; 2025 Muhammed Kalkan | All rights reserved.
   </footer>
 
-  <!-- AOS & Theme Toggle -->
+  <!-- AOS & Toggle -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init();
@@ -98,12 +98,12 @@
         icon.classList.replace('fa-sun', 'fa-moon');
       }
 
-      // İkon spin animasyonu
+      // İkon spin
       icon.classList.add('rotate');
       setTimeout(() => icon.classList.remove('rotate'), 500);
     }
 
-    // Sayfa açılışında kaydedilen tema
+    // Sayfa yüklenince localStorage
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-bs-theme', savedTheme);
     document.documentElement.style.setProperty('--hero-bg',
