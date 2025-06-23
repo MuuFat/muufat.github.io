@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="How I Built My Portfolio - Muhammed Kalkan">
+  <title>How I Built My Portfolio | Muhammed Kalkan</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      color: white;
+      position: relative;
+    }
+    .hero h1 { font-size: 2.5rem; }
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    footer {
+      background: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Theme Toggle -->
+  <button class="btn btn-outline-light theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 data-aos="fade-down">How I Built My Portfolio</h1>
+    <p class="fs-6" data-aos="fade-up">A detailed write-up about building my personal site.</p>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="container my-5" data-aos="fade-up">
+    <article>
+      <p>Welcome to my first blog post! Here I explain step-by-step how I built my personal developer portfolio using HTML, Bootstrap, GitHub Pages, AOS for scroll animations, and a simple theme toggle for dark mode.</p>
+      <p>First, I designed a clean hero section with a gradient background and my profile image. Then I added sections for About, Skills, Projects, Blog and Contact. Bootstrap’s grid makes it fully responsive.</p>
+      <p>I use GitHub Pages for free hosting, so the whole site costs zero money to maintain.</p>
+      <p>Check the <a href="index.html">home page</a> for more!</p>
+    </article>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Muhammed Kalkan | All rights reserved.
+  </footer>
+
+  <!-- AOS & Toggle -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-bs-theme');
+      html.setAttribute('data-bs-theme', current === 'light' ? 'dark' : 'light');
+    }
+  </script>
+
+</body>
+</html>
