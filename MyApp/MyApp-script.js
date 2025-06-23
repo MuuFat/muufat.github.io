@@ -63,3 +63,11 @@ fetch("https://api.quotable.io/random")
   .then(data => {
     document.getElementById('quote').innerText = `"${data.content}" — ${data.author}`;
   });
+
+if (document.body.classList.contains("dark")) {
+  icon.classList.remove("fa-moon");
+  icon.classList.add("fa-sun");
+} else {
+  icon.classList.remove("fa-sun");
+  icon.classList.add("fa-moon");
+}
