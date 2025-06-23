@@ -25,7 +25,7 @@
       padding: 120px 20px;
       text-align: center;
       background: var(--hero-bg);
-      color: var(--hero-text);
+      color: var(--hero-text, #fff);
       position: relative;
     }
     .hero img {
@@ -40,6 +40,9 @@
       position: absolute;
       top: 20px;
       right: 20px;
+    }
+    #theme-toggle {
+      z-index: 9999;
     }
     .card {
       border: none;
