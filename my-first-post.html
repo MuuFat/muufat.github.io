@@ -16,38 +16,51 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+    }
     .hero {
       padding: 100px 20px;
       text-align: center;
-      background: linear-gradient(135deg, #007bff, #00c6ff);
-      color: white;
+      background: var(--hero-bg, linear-gradient(135deg, #007bff, #00c6ff));
+      color: var(--hero-text, #fff);
       position: relative;
     }
-    .hero h1 { font-size: 2.5rem; }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
     .theme-toggle {
       position: absolute;
       top: 20px;
       right: 20px;
+      z-index: 9999;
     }
     footer {
       background: #f8f9fa;
       padding: 20px 0;
       text-align: center;
     }
+    .rotate {
+      animation: rotate 0.5s ease;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
 
   <!-- Theme Toggle -->
-  <button class="btn btn-outline-light theme-toggle" onclick="toggleTheme()">
-    <i class="fas fa-moon"></i>
+  <button id="theme-toggle" class="btn btn-secondary position-fixed top-0 end-0 m-3" onclick="toggleTheme()">
+    <i id="theme-icon" class="fas fa-moon"></i>
   </button>
 
   <!-- HERO -->
   <section class="hero">
     <h1 data-aos="fade-down">How I Built My Portfolio</h1>
-    <p class="fs-6" data-aos="fade-up">A detailed write up about building my personal site.</p>
+    <p class="fs-6" data-aos="fade-up">A detailed write-up about building my personal site.</p>
   </section>
 
   <!-- CONTENT -->
@@ -65,15 +78,42 @@
     &copy; 2025 Muhammed Kalkan | All rights reserved.
   </footer>
 
-  <!-- AOS & Toggle -->
+  <!-- AOS & Theme Toggle -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init();
     function toggleTheme() {
       const html = document.documentElement;
+      const icon = document.getElementById("theme-icon");
       const current = html.getAttribute('data-bs-theme');
-      html.setAttribute('data-bs-theme', current === 'light' ? 'dark' : 'light');
+      const newTheme = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-bs-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      if (newTheme === 'dark') {
+        document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #111, #333)');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        document.documentElement.style.setProperty('--hero-bg', 'linear-gradient(135deg, #007bff, #00c6ff)');
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
+
+      // İkon spin animasyonu
+      icon.classList.add('rotate');
+      setTimeout(() => icon.classList.remove('rotate'), 500);
     }
+
+    // Sayfa açılışında kaydedilen tema
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    document.documentElement.style.setProperty('--hero-bg',
+      savedTheme === 'dark'
+        ? 'linear-gradient(135deg, #111, #333)'
+        : 'linear-gradient(135deg, #007bff, #00c6ff)'
+    );
+    document.getElementById('theme-icon').classList.add(
+      savedTheme === 'dark' ? 'fa-sun' : 'fa-moon'
+    );
   </script>
 
 </body>
