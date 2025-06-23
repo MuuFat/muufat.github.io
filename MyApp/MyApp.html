@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name | MyApp</title>
+  <meta name="description" content="Minimal & animated personal landing page">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Your Name">
+  <meta property="og:description" content="Minimal & animated personal landing page">
+  <meta property="og:image" content="assets/profile.jpg">
+  <!-- Styles -->
+  <link rel="stylesheet" href="MyApp-style.css" />
+</head>
+<body>
+  <!-- Dark Mode Toggle -->
+  <button id="theme-toggle">🌙</button>
+
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <!-- Profile Card with 3D Tilt -->
+  <div class="card" data-tilt>
+    <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img" />
+    <h1><span id="typewriter"></span></h1>
+    <p class="bio">I craft clean and creative web experiences.</p>
+    <p class="motto"><em>“Code. Create. Inspire.”</em></p>
+    <div class="social-icons">
+      <a href="#"><img src="assets/icons/github.svg" alt="GitHub"></a>
+      <a href="#"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+      <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+    </div>
+    <button class="cta">Download CV</button>
+    <p id="quote"></p>
+  </div>
+
+  <footer>© 2025 Muhammed Fatih Kalkan — Made with ❤️ and Vanilla JS</footer>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <!-- My Script -->
+  <script src="MyApp-script.js"></script>
+</body>
+</html>
