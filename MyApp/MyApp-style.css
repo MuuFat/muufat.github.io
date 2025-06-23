@@ -88,3 +88,12 @@ footer {
   padding: 1rem;
   font-size: 0.8rem;
 }
+
+.rotate {
+  animation: rotate 0.5s ease;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
