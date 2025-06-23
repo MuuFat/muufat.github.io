@@ -19,6 +19,8 @@ body.dark {
 }
 
 #theme-toggle {
+  color: #000;
+  transition: color 0.3s;
   position: fixed;
   top: 1rem;
   right: 1rem;
@@ -27,6 +29,10 @@ body.dark {
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 9999;
+}
+
+body.dark #theme-toggle i {
+  color: #fff;
 }
 
 .card {
