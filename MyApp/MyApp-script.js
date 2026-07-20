@@ -57,11 +57,24 @@ toggle.onclick = () => {
 // Particles.js Config
 particlesJS.load('particles-js', 'particles.json');
 
-// Quote API
+// Quote API (with local fallback since api.quotable.io has a history of extended outages)
+const fallbackQuotes = [
+  { content: "Code. Create. Inspire.", author: "Muhammed Kalkan" },
+  { content: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+  { content: "First, solve the problem. Then, write the code.", author: "John Johnson" }
+];
+
 fetch("https://api.quotable.io/random")
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("Quote API returned an error");
+    return res.json();
+  })
   .then(data => {
     document.getElementById('quote').innerText = `"${data.content}" — ${data.author}`;
+  })
+  .catch(() => {
+    const fallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+    document.getElementById('quote').innerText = `"${fallback.content}" — ${fallback.author}`;
   });
 
 if (document.body.classList.contains("dark")) {
