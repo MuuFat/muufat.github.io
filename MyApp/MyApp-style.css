@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: #ffff;
+  background: #fff;
   color: #333;
   transition: background 0.5s, color 0.5s;
   overflow-x: hidden;
