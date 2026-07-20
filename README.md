@@ -29,6 +29,6 @@ This repository contains:
 - **Dark/Light mode toggle**.
 - **Vanilla Tilt.js** for 3D hover effect.
 - **Particles.js** for subtle interactive background.
-- Fetches a random inspirational quote from [Quotable API](https://api.quotable.io/random).
-- Direct links to GitHub, LinkedIn, Twitter, Instagram.
+- Fetches a random inspirational quote from [Quotable API](https://api.quotable.io/random), with a local fallback quote if the API is unavailable.
+- Direct links to GitHub and LinkedIn.
 - Fully responsive and optimized for fast load times.
